@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" fill="none">
+  <rect width="40" height="40" rx="10" fill="#111111"/>
+  <path d="M20 9C13.92 9 9 13.92 9 20C9 26.08 13.92 31 20 31C24.7 31 28.7 28.1 30.36 24" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M17 9H20.5V5.5" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="17.5,15.5 24.5,20 17.5,24.5" fill="#ffffff"/>
+  <text x="52" y="27" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="bold" letter-spacing="-0.5">ReplayEd</text>
+</svg>

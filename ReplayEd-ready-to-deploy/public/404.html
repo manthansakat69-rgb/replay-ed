@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting to ReplayEd...</title>
+    <script>
+      // Single-Page App redirect for GitHub Pages
+      // Redirects non-hash URLs to the hash-based SPA route inside /ReplayEd/
+      var path = window.location.pathname;
+      var repoName = '/ReplayEd';
+      
+      // If path starts with /ReplayEd, strip it to get the sub-route
+      var subRoute = '';
+      if (path.indexOf(repoName) === 0) {
+        subRoute = path.substring(repoName.length);
+      } else {
+        subRoute = path;
+      }
+      if (subRoute === '/' || subRoute === '') {
+        subRoute = '';
+      }
+      
+      var targetUrl = window.location.origin + repoName + '/#' + subRoute + window.location.search + window.location.hash;
+      window.location.replace(targetUrl);
+    </script>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background-color: #0a0a0a;
+        color: #f4f4f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+      }
+      h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+      p { font-size: 0.875rem; color: #a1a1aa; }
+      a {
+        color: #ffffff;
+        background-color: #27272a;
+        padding: 0.6rem 1.2rem;
+        border-radius: 9999px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 1rem;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ReplayEd Adaptive Learning Platform</h1>
+    <p>Redirecting you to the active application portal...</p>
+    <a href="/ReplayEd/#/">Click here if not redirected automatically</a>
+  </body>
+</html>

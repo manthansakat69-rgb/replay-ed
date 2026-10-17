@@ -1,0 +1,62 @@
+[
+  {
+    "id": "variables",
+    "name": "Variables & Data Types",
+    "prerequisites": []
+  },
+  {
+    "id": "loops",
+    "name": "Control Flow & Loops",
+    "prerequisites": ["variables"]
+  },
+  {
+    "id": "functions",
+    "name": "Methods & Functions",
+    "prerequisites": ["variables"]
+  },
+  {
+    "id": "oop_basics",
+    "name": "OOP Basics (Classes & Objects)",
+    "prerequisites": ["variables", "functions"]
+  },
+  {
+    "id": "inheritance",
+    "name": "Inheritance & Polymorphism",
+    "prerequisites": ["oop_basics"]
+  },
+  {
+    "id": "interfaces",
+    "name": "Interfaces & Abstraction",
+    "prerequisites": ["oop_basics"]
+  },
+  {
+    "id": "collections",
+    "name": "Collections Framework (List, Map, Set)",
+    "prerequisites": ["oop_basics", "interfaces"]
+  },
+  {
+    "id": "exceptions",
+    "name": "Exception Handling",
+    "prerequisites": ["oop_basics"]
+  },
+  {
+    "id": "dependency_injection",
+    "name": "Dependency Injection & Inversion of Control",
+    "prerequisites": ["interfaces", "oop_basics"]
+  },
+  {
+    "id": "rest_basics",
+    "name": "REST API Basics (HTTP, JSON, Endpoints)",
+    "prerequisites": ["collections"]
+  },
+  {
+    "id": "spring_boot_basics",
+    "name": "Spring Boot Basics & Annotations",
+    "prerequisites": ["dependency_injection", "rest_basics"]
+  },
+  {
+    "id": "jpa",
+    "name": "Spring Data JPA & Persistence",
+    "prerequisites": ["spring_boot_basics", "exceptions"]
+  }
+]

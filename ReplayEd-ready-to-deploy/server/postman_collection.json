@@ -1,0 +1,153 @@
+{
+  "info": {
+    "name": "PS2 Adaptive Learning & Proctoring API Contract",
+    "_postman_id": "ps2-portal-api-2026",
+    "description": "Complete Postman collection for the ReplayEd PS2 backend API conforming to Step 3 API contract.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"student@replayed.edu\",\n  \"password\": \"password123\",\n  \"role\": \"student\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "login"] }
+      }
+    },
+    {
+      "name": "Exams - Get Config",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:5000/api/exams/exam_ds_algo_01", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "exams", "exam_ds_algo_01"] }
+      }
+    },
+    {
+      "name": "Exams - Start Session",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"studentId\": \"s1\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/exams/exam_ds_algo_01/start", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "exams", "exam_ds_algo_01", "start"] }
+      }
+    },
+    {
+      "name": "Adaptive - Next Question",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:5000/api/next-question?studentId=s1&target=oop_basics", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "next-question"], "query": [{ "key": "studentId", "value": "s1" }, { "key": "target", "value": "oop_basics" }] }
+      }
+    },
+    {
+      "name": "Adaptive - Submit Answer",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"studentId\": \"s1\",\n  \"questionId\": \"q_var_mcq_1\",\n  \"correct\": true,\n  \"sessionId\": \"sess_demo_alex\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/answer", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "answer"] }
+      }
+    },
+    {
+      "name": "Sandbox - Run Code",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"questionId\": \"q_var_code_1\",\n  \"code\": \"const fs = require('fs'); const line = fs.readFileSync(0, 'utf-8').trim(); const [a, b] = line.split(/\\\\s+/).map(Number); console.log(a + b);\",\n  \"lang\": \"javascript\",\n  \"studentId\": \"s1\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/code/run", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "code", "run"] }
+      }
+    },
+    {
+      "name": "Proctoring - Send Events",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sessionId\": \"sess_demo_alex\",\n  \"events\": [\n    { \"t\": 1200, \"type\": \"key\", \"data\": { \"key\": \"c\" } },\n    { \"t\": 2400, \"type\": \"paste_attempt_blocked\", \"data\": { \"charCount\": 350 } },\n    { \"t\": 3500, \"type\": \"tab_hidden\", \"data\": {} }\n  ]\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/events", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "events"] }
+      }
+    },
+    {
+      "name": "Replay - Get Attempt Replay",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:5000/api/attempt/attempt_demo_01/replay", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "attempt", "attempt_demo_01", "replay"] }
+      }
+    },
+    {
+      "name": "Mastery - Get Student Mastery",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:5000/api/student/s1/mastery", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "student", "s1", "mastery"] }
+      }
+    },
+    {
+      "name": "Trainer - Batch Summary",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:5000/api/trainer/batch", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "trainer", "batch"] }
+      }
+    },
+    {
+      "name": "Viva - Generate Oral Questions",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"attemptId\": \"attempt_demo_01\",\n  \"code\": \"class LRUCache { constructor(capacity) { this.capacity = capacity; } }\",\n  \"questionPrompt\": \"Implement an LRU Cache\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/explain/generate", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "explain", "generate"] }
+      }
+    },
+    {
+      "name": "Viva - Judge Oral Answer",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"Why use a doubly linked list combined with a hash map?\",\n  \"answer\": \"The hash map gives O(1) lookup by key while the doubly linked list maintains recency order and allows O(1) removal and insertion at head/tail.\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/explain/judge", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "explain", "judge"] }
+      }
+    },
+    {
+      "name": "Admin - Generate & Verify Question",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"conceptId\": \"loops\",\n  \"difficulty\": 2\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/admin/generate-question", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "admin", "generate-question"] }
+      }
+    },
+    {
+      "name": "Exams - Final Submit",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sessionId\": \"sess_demo_alex\",\n  \"studentId\": \"s1\",\n  \"finalCode\": \"class LRUCache {}\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/exams/exam_ds_algo_01/submit", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "exams", "exam_ds_algo_01", "submit"] }
+      }
+    }
+  ]
+}
